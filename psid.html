@@ -1,1 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <p>&nbsp;</p>
+<style>
 
+    select, input {
+      padding: 8px;   
+      margin-left: 0px;
+      margin-right: 10px;
+      margin-top: 0px;
+      margin-bottom: 10px;
+      width:100%;
+      font-weight: bolder;
+      font-size: large;
+
+
+      }
+    label{
+      padding-left: 8px;   
+      margin-right: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-decoration:underline;
+      font-weight: bolder;
+      font-size: large;
+
+    }
+    #savedata, #a1 {
+      margin: 20px;
+      font-size: large;
+      font-weight: bolder;
+    }
+    #iform{
+      margin: 20px;
+      max-width: 720px;
+    }
+
+
+
+
+  </style>
+  <div id="iform">
+    <h1>Id Card Generator</h1>
+    <br>
+    <label for="loadidinfo">Load ID Info :</label>
+    <input type="file" name="loadidinfo" id="browse" accept=".idd" onchange="loadiddata(event)">
+
+    <br/>
+   
+    <form>
+      <input type="reset" value="Reset">
+      <label for="idtitle">ID Type :</label>
+      <input type="text" style="width:100%" name="idtitle" id="idtitle" value="மாணவர் அடையாள அட்டை" disabled><br>
+      <label for="isch1">School Name:</label>
+      <input type="text" name="isch1" id="isch1"  placeholder="அரசு தொடக்கப் பள்ளி." ><br>
+      <input type="text" name="isch2" id="isch2" placeholder="சென்னை-600002" ><br>
+      <input type="text" name="ische1" id="ische1" placeholder="Govt. Hr. Sec. School, Chennai-600001"><br>
+      <input type="text" name="ische2" id="ische2" placeholder="&#127760; google.in, &#128231 Govtschool@yahoo.co.in,  &#9743;  044-123456, &#128241; 9876512345"><br>
+      
+      
+      <label for="inamee">Name in English:</label>
+      <input type="text" name="Name" id="inamee" ><br>
+      <label for="inamet">Name in Tamil:</label>
+      <input type="text" name="inamet" id="inamet" ><br>
+      <label for="igendar">Gendar :</label>
+      <select name="பாலினம்" id="igendar">
+        <option value=" "> </option>
+        <option value="ஆண்">Male</option>
+        <option value="பெண்">Female</option>
+      </select><br/>
+      <label for="iclass">Class :</label>
+      <select name="வகுப்பு" id="iclass">
+        <option value=" "> </option>
+        <option value="முன் பருவப்பள்ளி">PreKG</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="தையல் - தொழிற்ப்பயிற்சி">தையல்-தொழிற்ப்பயிற்சி</option>
+      </select>
+      <select name="isec" id="isec">
+        <option value=" "> </option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="G">G</option>
+        <option value="H">H</option>
+      </select><br/><br>
+      <label for="idob">Date of Birth:</label>
+      <input type="tel" name="பி.தேதி" id="idob" value="" placeholder="DD-MM-YYYY" onchange="agecount()"><br>
+      <input type="text" name="வயது" id="iage" value="0" disabled><br>
+  
+      <label for="ibgroup">Blood Group:</label>
+      <select name="கு.வகை" id="ibgroup">
+        <option value=" "> </option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB-">AB-</option>
+        <option value="AB+">AB+</option>
+      </select>
+        <br>
+      
+      
+
+      <label for="ifn">Father Name:</label>
+      <input type="text" name="அப்பா " id="ifn" value="" ><br>
+      <label for="imn">Mother Name:</label>
+      <input type="text" name="அம்மா " id="imn" value="" ><br>
+  
+      <label for="iaddress1">Address:</label><br/>
+      <input type="text" name="முகவரி" id="iaddress1" value="" ><br>
+      <input type="text" name="முகவரி" id="iaddress2" value="" ><br>
+  
+      <label for="ipin">Pin Code:</label>
+      <input type="text" name="ipin" id="ipin" value="" maxlength="8" ><br>
+  
+      <label for="icell">Phone Number:</label>
+      <input type="text" name="icell" id="icell" value="📱" ><br>
+
+      <label for="istudno">Student NO:</label>
+      <input type="number" name="மாணவர் எண்" id="istudno" value="" placeholder="Emis" maxlength="15" ><br>
+      
+
+      
+      <div>
+        <img id="cardbg"  src="941w-UHRf_NCyJ7c.jpg" alt="" width="200">
+        <label for="selectbg">Card Background:</label>
+        <input id="selectbg" type="file" accept="image/jpeg" onchange="getpreview(event,'bg')" disabled> 
+      </div>
+      <div>
+        <img id="logo"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhazl-TD7ulixq42DSX9VBLvEJqz13GFzVanxkl6Q5SWfuh1F1WWIet-n1rTeyriAeKVfq6hDPsVp9oKjYl83aZ0QHiouFf7VF8-8CkatYWEc7vnhHXdAYPpn6gLVR5LE80h5XcAAEKAnPPHKGBX4XbvbJ189_uc2CmhqWUVbDmzN37Xg/s1600/Tn%20School%20assembly.jpg" alt="" width="200"><br>
+        <label for="ilogo">Logo file:</label>
+        <input id="ilogo" type="file" accept="image/png" onchange="getpreview(event,'logo')" ><br>
+      </div>
+        <div>
+        <img id="photo"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQEmODFV_oFqLxO1_VYm4q1LjR5cHL0YSUTF1-_YKwQ4khC7f7cc2S2APYRM5N9FR9gKlxCabUC_baihl3GB_3tfq3t-yVAi4rw8qYYIaT3b0N_TJn78Y3lCW9yqHVHbV5yp8-VWmib4lN8LApz-Z9xG-xMf4sDTiNf41BZVxtA8MrOg/s1600/photo.jpg" alt="" width="200"><br>
+        <label for="selectphoto">Student Photo:</label>
+        <input id="selectphoto" type="file" accept="image/jpeg" onchange="getpreview(event,'photo')" ><br>
+      </div>
+      <div>
+        <img id="sign"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrnqn4uJnU8pxfbilp3c6LbvFSziRH7DFohE2gwTqnPQi0k2SEfrwm5EpWFtC9RAckOS0PuMPZvsFreA6ZjyZYBJXiDiXg1LiYA1acwnrIPUEj3Gq5XJae_HES2pEs99xaare12wyhrEpsQUmknNHcU6ijRhyphenhyphenmFC06FcBo6GQcTE_k0jXXAF2I4uSWBHg/s300/Singnature1.png" alt="" width="200"><br>
+        <input type="text" style="width:100%" name="ihm" id="ihm" value="தலைமை ஆசிரியர்" disabled >
+        <label for="hmsign">HM Sign:</label>
+        <input id="hmsign" type="file" accept="image/png" onchange="getpreview(event,'sign')" ><br>
+      </div>
+     
+    </form>
+    
+      <label for="itheme">Choose Theme:</label>
+      <select name="theme" id="itheme" onchange="updatetheme(event)">
+        <option value="#004AAB-#39B5FF-white-#6A994E-#BC4749">Blue</option>
+        <option value="#386641-#A7C957-#F2E8CF-#6A994E-#BC4749">Green</option>
+        <option value="#E07A5F-#F2CC8F-#F4F1DE-#81B29A-#3D405B">BurntSienna</option>
+        <option value="#562B33-#B06567-#E9D7DA-#81B29A-#3D405B">Purple Brown,Brownish Purple</option>
+        <option value="#613F75-#EF798A-#E5C3D1-white-black">Finn + bright pink</option>
+        <option value="#1D4441-#4C918E-#E1E3E2-white-black">Teal</option>
+      </select>
+        <br>
+
+    
+    <button onclick="updatecanvas()" style="width: 100%; height:3rem; font-size: large; font-weight: bold;background-color: greenyellow;">Generate ID</button>
+  
+      
+      <hr/>
+
+    
+  
+  
+    <div style="border: solid 1px red;"><canvas id="canvas1" style="border: solid 1px blue;"></canvas></div>
+    <br>
+    <div style="width: 100%; max-width: 720px; display:inline-flex; flex-direction: row;">
+      <div style="width: 33%;"><a id="a1">Download</a></div>
+      <div style="width: 33%;"><a id="savedata">Savedata</a></div>
+      <div style="width: 33%;"><a id="savephoto">Savephoto</a></div>
+    </div>
+  </div>  
+    
+    <script>
+
+            //test
+            if(localStorage.isch1){
+              document.getElementById("isch1").value=localStorage.isch1;
+              document.getElementById("isch2").value=localStorage.isch2;
+              document.getElementById("ische1").value=localStorage.ische1;
+              document.getElementById("ische2").value=localStorage.ische2;
+            }
+
+            var csw=649; csh=1023; //canvas size 638x1011 for id 53.98mm X 85.60mm ; 649x1023 for id 54.98mm X 86.60mm 300dpi
+            var clr1 = "#004AAB";  // color1 dark #004AAB #004AAB-#39B5FF-white-#6A994E-#BC4749
+            var clr2 = "#39B5FF";  // color2 light #39B5FF`
+            var clr3 = "white";   // color3 tamil name bg color
+            var clr4 ="#6A994E"; //shadow 1
+            var clr5 ="#BC4749"; //shadow 1
+            var tamnaf = clr1; //tamil name font color
+            var tamnas = "#000000"; // tamil name shadow color
+            var margin4s = 2; //margin mm 4side *12
+            var logosize=0; 
+            var mm1=12; //1mm =12px
+
+
+            var bgimg = document.getElementById("cardbg");
+            var imglogo= document.getElementById("logo");
+            var img1= document.getElementById("photo");
+            var img2= document.getElementById("sign");
+            var tabend = csw -(margin4s*mm1); //tab end point
+            var tabc=csw/2;  // card center point pixel for school name
+            var tab1=margin4s*mm1;  // tab for title (after photo)
+            var tab2=tabc-200;  // tab for value (after title)
+            var tabdob=tabc;  // tab for date of Birth (after title)
+            var tabage=tabc+250;  // tab for age (after title)
+            var maxtxtw=csw-(margin4s*mm1*2); //max text width 
+            var ls=560; // line starting pixel
+            var lh=43;  // line height in pixel
+
+            
+            const d= new Date();
+            var age = 4;  //age calculated by dob later
+            var agec = [31,5];
+            if(d.getMonth()>=5){
+              agec[2]=d.getFullYear();
+            }
+            else{
+              agec[2]=d.getFullYear()-1;
+            }
+            agec[3]=agec[2]-1999; // eg.2024-25
+
+            var tex, par, xmldoc; //file load and save
+            var savetxt; //save xml text
+
+      function loadiddata(event)
+      {
+        var fr= new FileReader();
+        fr.onloadend=function(){
+            //document.getElementById('output').textContent=fr.result;
+            tex=fr.result;
+            
+            par= new DOMParser();
+            xmldoc=par.parseFromString(tex,"text/xml")
+            var schooldat=xmldoc.getElementsByTagName('studentdata')[0];
+            document.getElementById("inamet").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[0].childNodes[0].nodeValue;
+            document.getElementById("inamee").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[1].childNodes[0].nodeValue;
+            document.getElementById("iclass").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[2].childNodes[0].nodeValue;
+            document.getElementById("isec").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[3].childNodes[0].nodeValue;
+            document.getElementById("igendar").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[4].childNodes[0].nodeValue;
+            document.getElementById("idob").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[5].childNodes[0].nodeValue;
+            document.getElementById("ibgroup").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[6].childNodes[0].nodeValue;
+            document.getElementById("ifn").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[7].childNodes[0].nodeValue;
+            document.getElementById("imn").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[8].childNodes[0].nodeValue;
+            document.getElementById("iaddress1").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[9].childNodes[0].nodeValue;
+            document.getElementById("iaddress2").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[10].childNodes[0].nodeValue;
+            document.getElementById("ipin").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[11].childNodes[0].nodeValue;
+            document.getElementById("icell").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[12].childNodes[0].nodeValue;
+            document.getElementById("istudno").value=xmldoc.getElementsByTagName('studentdata')[0].childNodes[13].childNodes[0].nodeValue;
+        }
+        fr.readAsText(event.target.files[0]);
+      } 
+      function getpreview(event,bgorphoto){
+        var imageurl = URL.createObjectURL(event.target.files[0]);
+        bgorphoto=="bg" ? bgimg.src=imageurl: null ;
+        bgorphoto=="photo" ? img1.src=imageurl: null ;
+        bgorphoto=="sign" ? img2.src=imageurl: null ;
+        bgorphoto=="logo" ? imglogo.src=imageurl: null ;  
+        bgorphoto=="logo" ? logosize= 80: null ;  
+      }
+      function updatetheme(e){
+        let colors=e.target.value.split("-");
+        clr1=colors[0];
+        clr2=colors[1];
+        clr3=colors[2];
+        clr4=colors[3];
+        clr5=colors[5];
+    
+      }
+
+      
+      function updatecanvas()
+      {
+          var c = document.getElementById('canvas1');
+          if(c.getContext)
+          {
+              var ctx = c.getContext('2d');
+          }
+          else{ console.log('error'); }
+
+          c.height = csh;
+          c.width =csw;
+          
+          ctx.fillStyle=clr3;
+          ctx.fillRect(0,0,csw,csh);
+          // ctx.drawImage(bgimg,0,0,csw,csh); // bg img
+          ctx.translate(0, 0);
+          //ctx.strokeRect(0,0,csw,csh);
+
+          
+// header graphs
+
+
+
+          ctx.strokeStyle = "black"; 
+
+          
+// light head area
+          ctx.beginPath();
+
+          ctx.lineTo(csw-114,285);
+          ctx.lineTo(csw,0);
+          ctx.lineTo(0,0);
+          ctx.lineTo(114,285);
+
+          ctx.closePath();
+
+          ctx.fillStyle = clr2;
+          ctx.fill();
+
+   //dark head 
+          ctx.beginPath(); 
+
+          ctx.lineTo(0,0);
+          ctx.lineTo(0,113);
+          ctx.lineTo(0+50,226);
+          ctx.lineTo(csw-50,226); 
+          ctx.lineTo(csw,113); 
+          ctx.lineTo(csw,0); 
+          ctx.fillStyle =clr1 ; 
+          ctx.fill();
+
+
+          
+
+           ctx.strokeStyle = "black"; ctx.lineWidth=1;
+           //ctx.strokeRect(tab1, 24, 100, 100);         //logo box
+            if(logosize){
+           ctx.drawImage(imglogo,tab1,tab1,logosize,logosize); // logo img
+            }
+//footer colors
+          //1 part
+          ctx.beginPath(); 
+          ctx.moveTo(csw,csh);
+
+          ctx.lineTo(csw,843);
+          ctx.lineTo(290,csh);
+          ctx.closePath();
+          ctx.fillStyle =clr1 ;
+          ctx.fill();
+
+          //2 part
+          ctx.beginPath(); 
+          ctx.moveTo(0,csh);
+
+          ctx.lineTo(0,912);
+          ctx.lineTo(csw,csh);
+          ctx.closePath();
+          ctx.fillStyle =clr2 ;
+          ctx.fill();
+          
+          ctx.beginPath(); 
+          ctx.moveTo(0,904);
+          ctx.lineTo(csw,csh-8);
+          ctx.lineWidth=8;
+          ctx.strokeStyle = clr2 ;
+          ctx.stroke();
+
+
+          // 3 part
+          ctx.beginPath(); 
+          ctx.moveTo(0,csh);
+          ctx.lineTo(0,998);
+          ctx.lineTo(200,976);
+          ctx.lineTo(325,csh);
+          ctx.closePath()
+          ctx.fillStyle =clr1 ;
+          ctx.fill();
+
+
+          
+          
+          
+        //sign img
+          ctx.fillStyle=clr3;
+          ctx.fillRect(482,870,100,50);         //sign white box
+          ctx.drawImage(img2,482,870 ,100,50); //sign
+
+  
+          ctx.textAlign = "center";
+          ctx.font = "bold 40px 'Tiro Tamil'"; //Mukta Malar, Noto Sans Tamil
+          ctx.shadowColor = "black"; //add shadow
+          ctx.shadowBlur = 2;
+          ctx.shadowOffsetX = 1;
+          ctx.shadowOffsetY = 2;  
+          ctx.fillStyle = "white";
+          ctx.fillText(" "+document.getElementById("isch1").value,tabc+(logosize/2) ,55,csw-((tab1*2)+logosize)); //school name 1 header
+          
+          ctx.font = "bold 32px 'Noto Sans Tamil'"; // //Kavivanar , Tiro Tamil
+          //ctx.fillStyle = clr2;
+          ctx.fillText(" "+document.getElementById("isch2").value,tabc+(logosize/2),95,csw-((tab1*2)+logosize)); // school name 2 header
+          ctx.shadowColor = "transparent"; // remove shadow
+
+       
+          ctx.font = "bold 20px Arial";
+          //ctx.fillStyle = "black";
+          ctx.textAlign = "center";
+          ctx.shadowColor = "black"; //add shadow
+          ctx.shadowBlur = 0; ctx.shadowOffsetX = 2;  ctx.shadowOffsetY = 2;  
+          ctx.fillText(document.getElementById("idtitle").value,tabc,130,maxtxtw); 
+        
+//tamil name
+          ctx.textAlign = "center";
+          ctx.shadowColor = "black"; ctx.shadowBlur = 7; ctx.shadowOffsetX = -2;  ctx.shadowOffsetY = -2;  
+          ctx.font = "bold 46px 'Mukta Malar'"; // or Mukta Malar";
+          ctx.fillStyle = "white";//tamnaf; //#F05E68
+          ctx.fillText(document.getElementById("inamet").value,tabc,ls-60,maxtxtw); //tab1+50
+          ctx.shadowColor = "white"; ctx.shadowBlur = 0; ctx.shadowOffsetX = 2;  ctx.shadowOffsetY = 2;  
+          ctx.fillStyle = tamnaf; //#F05E68
+          ctx.fillText(document.getElementById("inamet").value,tabc,ls-60,maxtxtw); //tab1+50
+
+
+
+          
+          ctx.shadowBlur = 0;
+          ctx.shadowColor = "white";         
+  
+          ctx.textAlign = "start";
+          ctx.font = "bold 22px Mukta Malar"; //name style
+          ctx.fillStyle = "black";
+          ctx.fillText(document.getElementById("iclass").name,tab1,ls+lh,tab2-tab1);
+
+
+
+
+
+          ctx.fillText(document.getElementById("igendar").name,tab1,ls+(lh*2),tab2-tab1);
+          ctx.textAlign = "end";
+          ctx.fillText(document.getElementById("idob").name,tabdob,ls+(lh*2)),100;
+          
+          ctx.fillText(document.getElementById("iage").name,tabage,ls+(lh*2),100);      
+          ctx.textAlign = "start"; 
+          ctx.fillText(document.getElementById("ifn").name,tab1,ls+(lh*3),tab2-tab1);
+          ctx.fillText(document.getElementById("imn").name,tab1,ls+(lh*4),tab2-tab1);
+          ctx.fillText(document.getElementById("iaddress1").name,tab1,ls+(lh*5),tab2-tab1);
+          ctx.textAlign = "end";
+          ctx.fillText(document.getElementById("ibgroup").value!=" "? "B.G: ":"",tabage,(ls+lh*7),100);
+          ctx.textAlign = "start"; 
+          if(document.getElementById("istudno").value != " " && document.getElementById("istudno").value != "" ){ ctx.fillText( document.getElementById("istudno").name ,tab1,(ls+lh*8),tab2-tab1);}
+          ctx.textAlign = "start"; 
+
+          
+          // value
+          ctx.font = "bold 32px 'Times New Roman'";// value style
+          ctx.textAlign = "center";
+          ctx.fillText(document.getElementById("inamee").value,tabc,ls,maxtxtw);
+          ctx.font = "bold 30px 'Noto Sans Tamil'";// Arial, Noto Sans Tamil, Mukta Malar
+          ctx.textAlign = "start";
+          ctx.fillText(": "+document.getElementById("iclass").value +" "+(document.getElementById("isec").value!=" "?(" - '"+document.getElementById("isec").value+"'"):"" ),tab2,ls+lh);
+                       
+          ctx.fillText(": "+document.getElementById("igendar").value,tab2,(ls+lh*2),tabdob-(tab2+90));
+          ctx.fillText(": "+document.getElementById("idob").value,tabdob,(ls+lh*2));
+
+          agecount();
+          ctx.fillText(": "+age,tabage,ls+(lh*2)); //age
+  
+          ctx.fillText(": "+document.getElementById("ifn").value,tab2,ls+(lh*3),maxtxtw-100);
+          ctx.fillText(": "+document.getElementById("imn").value,tab2,ls+(lh*4),maxtxtw-100);
+          ctx.fillText(": "+document.getElementById("iaddress1").value,tab2,ls+(lh*5),maxtxtw-100);
+          ctx.fillText(document.getElementById("iaddress2").value+" - "+document.getElementById("ipin").value,tab1,ls+(lh*6),maxtxtw);
+          ctx.fillText(document.getElementById("icell").value,tab1,ls+(lh*7),maxtxtw-120);
+          ctx.fillText(document.getElementById("ibgroup").value,tabage,(ls+lh*7),50);
+          if(document.getElementById("istudno").value != " " && document.getElementById("istudno").value != "" ){ ctx.fillText( ": "+ document.getElementById("istudno").value ,tab2,(ls+lh*8),maxtxtw);}
+
+          ctx.shadowColor = "transparent"; // remove shadow
+//footer HM 
+        
+          ctx.shadowColor = tamnas; //add shadow
+          ctx.shadowBlur = 7;
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 0; 
+          ctx.fillStyle = "white";
+          ctx.font = "bold 25px 'Times New Roman'";
+          ctx.textAlign = "end";
+          ctx.fillText(document.getElementById("ihm").value,tabend,940,160); 
+          ctx.textAlign = "end";
+
+//footer english school name
+
+          ctx.fillText(document.getElementById("ische1").value,tabend,966,maxtxtw);
+          ctx.fillText(document.getElementById("ische2").value,tabend,996,maxtxtw);
+          ctx.fillStyle = "black";
+          ctx.textAlign = "start";
+
+          ctx.shadowColor = "white"; //add shadow
+          ctx.shadowBlur = 4;
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 0; 
+          ctx.rotate(270 * Math.PI / 180);
+          ctx.fillText(`${agec[2]}-${agec[3]}`,-410,120);      
+          ctx.rotate(90 * Math.PI / 180);  
+          
+          
+          //photo adding
+          ctx.save();
+          let photocircle = new Path2D();
+          //photocircle.rect(80, 10, 20, 130);              //add clip rect 
+          photocircle.arc(tabc, 300, 150, 0, 2 * Math.PI);   //add clip circle  
+          ctx.clip(photocircle);
+          ctx.drawImage(img1,tabc-150,150,300,300);    //photo add in cliped area
+          ctx.restore();
+
+          // circle around photo 
+          ctx.shadowBlur = 0; ctx.shadowColor="transparent";
+          ctx.beginPath(); 
+          ctx.arc(tabc, 300, 150, 0, 2 * Math.PI); 
+          ctx.strokeStyle = clr1; ctx.lineWidth=5;
+          ctx.stroke();
+          localStorage.isch1=document.getElementById("isch1").value;
+          localStorage.isch2=document.getElementById("isch2").value;
+          localStorage.ische1=document.getElementById("ische1").value;
+          localStorage.ische2=document.getElementById("ische2").value;
+
+
+          
+//temp border
+          //           ctx.lineWidth = 1;
+          //           let tempmargin=2
+          // ctx.strokeRect(0+(tempmargin*mm1),0+(tempmargin*mm1),csw-(tempmargin*mm1*2),csh-(tempmargin*mm1*2)); // 85.60 mm × 53.98 mm
+          
+          
+          //data save
+          savetxt="<schooldata>"+
+            "<studentdata>"+
+              "<nametamil>"+document.getElementById("inamet").value+"</nametamil>"+
+              "<nameenglish>"+document.getElementById("inamee").value+"</nameenglish>"+
+              "<class>"+document.getElementById("iclass").value+"</class>"+
+              "<sec>"+document.getElementById("isec").value+"</sec>"+
+              "<gendar>"+document.getElementById("igendar").value+"</gendar>"+
+              "<dob>"+(document.getElementById("idob").value!=""?document.getElementById("idob").value:"0")+"</dob>"+
+              "<bg>"+document.getElementById("ibgroup").value+"</bg>"+
+              "<fname>"+(document.getElementById("ifn").value!=""?document.getElementById("ifn").value:"-")+"</fname>"+
+              "<mname>"+(document.getElementById("imn").value!=""?document.getElementById("imn").value:"-")+"</mname>"+
+              "<address1>"+(document.getElementById("iaddress1").value!=""?document.getElementById("iaddress1").value:"-")+"</address1>"+
+              "<address2>"+(document.getElementById("iaddress2").value!=""?document.getElementById("iaddress2").value:"-")+"</address2>"+
+              "<pin>"+(document.getElementById("ipin").value!=""?document.getElementById("ipin").value:"-")+"</pin>"+
+              "<cellno>"+(document.getElementById("icell").value!=""?document.getElementById("icell").value:"-")+"</cellno>"+
+              "<studno>"+(document.getElementById("istudno").value!=""?document.getElementById("istudno").value:"-")+"</studno>"+
+              "</studentdata>"+
+              "</schooldata>";
+          
+          // save data
+          var sa=document.getElementById("savedata");
+          var textblob = new Blob([savetxt],{ type: 'text/idd;charset=utf-8' });
+          sa.href=URL.createObjectURL(textblob);
+          sa.download=document.getElementById("iclass").value+"_"+document.getElementById("isec").value+"_"+document.getElementById("inamee").value+".idd";
+          
+          // save photo    
+            const savaephoto=document.getElementById("savephoto");
+            savephoto.href= img1.src;
+            savaephoto.download=document.getElementById("iclass").value+"_"+document.getElementById("isec").value+"_"+document.getElementById("inamee").value+"_Pho.jpg";
+
+          //ID image save
+          c.toBlob(
+            blob => {
+                const anchor = document.getElementById("a1");
+                anchor.href = URL.createObjectURL(blob);
+                anchor.download=document.getElementById("iclass").value+"_"+document.getElementById("isec").value+"_"+document.getElementById("inamee").value+"_ID.jpg"
+            },'image/jpeg',1);
+
+
+
+
+          
+          window.alert("done");
+      }
+
+      function agecount(){ //agec,dob){
+        let doba= document.getElementById("idob").value.split("-");
+        if(doba.length==3){
+          
+          if(doba[1]>5){
+            document.getElementById("iage").value =( agec[2]-doba[2])-1;
+            age=(agec[2]-doba[2])-1;
+            document.getElementById('iage').value=age;
+          }
+          else{
+            document.getElementById("iage").value =( agec[2]-doba[2]);
+            age=(agec[2]-doba[2]);
+            document.getElementById('iage').value=age;
+
+          }
+
+        }
+      }
+      
+      
+  
+  
+    </script>
+</body>
+</html>
