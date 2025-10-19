@@ -217,6 +217,7 @@
             var margin4s = 2; //margin mm 4side *12
             var logosize=0; 
             var mm1=12; //1mm =12px
+			const st={}; //Student OBJ
 
 
             var bgimg = document.getElementById("cardbg");
@@ -296,6 +297,27 @@
       
       function updatecanvas()
       {
+	  
+		//html input value to oBJ
+		st.nameTamil=document.getElementById("inamet").value;
+		st.nameEnglish=document.getElementById("inamee").value;
+		st.class=document.getElementById("iclass").value;
+		st.sce=document.getElementById("isec").value;
+		st.gendar=document.getElementById("igendar").value;
+		st.dob=document.getElementById("idob").value;
+		st.bg=document.getElementById("ibgroup").value;
+		st.fatherName=document.getElementById("ifn").value;
+		st.motherName=document.getElementById("imn").value;
+		st.address1=document.getElementById("iaddress1").value;
+		st.address2=document.getElementById("iaddress2").value;
+		st.pin=document.getElementById("ipin").value;
+		st.cellno=document.getElementById("icell").value;
+		st.studno=document.getElementById("istudno").value;
+		
+		
+		for (let x in st) {
+		console.log(st[x]);
+			}
           var c = document.getElementById('canvas1');
           if(c.getContext)
           {
