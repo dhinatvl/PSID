@@ -217,6 +217,7 @@
             var margin4s = 2; //margin mm 4side *12
             var logosize=0; 
             var mm1=12; //1mm =12px
+			const st={}; //Student OBJ
 
 
             var bgimg = document.getElementById("cardbg");
@@ -296,6 +297,28 @@
       
       function updatecanvas()
       {
+	  
+		//html input value to oBJ
+		st.nameTamil=document.getElementById("inamet").value;
+		st.nameEnglish=document.getElementById("inamee").value;
+		st.class=document.getElementById("iclass").value;
+		st.sec=document.getElementById("isec").value;
+		st.gendar=document.getElementById("igendar").value;
+		st.dob=document.getElementById("idob").value;
+		st.bg=document.getElementById("ibgroup").value;
+		st.fatherName=document.getElementById("ifn").value;
+		st.motherName=document.getElementById("imn").value;
+		st.address1=document.getElementById("iaddress1").value;
+		st.address2=document.getElementById("iaddress2").value;
+		st.pin=document.getElementById("ipin").value;
+		st.cellno=document.getElementById("icell").value;
+		st.studno=document.getElementById("istudno").value;
+		
+		
+		for (let x in st) {
+		console.log(st[x]);
+		}
+
           var c = document.getElementById('canvas1');
           if(c.getContext)
           {
@@ -429,10 +452,10 @@
           ctx.shadowColor = "black"; ctx.shadowBlur = 7; ctx.shadowOffsetX = -2;  ctx.shadowOffsetY = -2;  
           ctx.font = "bold 46px 'Mukta Malar'"; // or Mukta Malar";
           ctx.fillStyle = "white";//tamnaf; //#F05E68
-          ctx.fillText(document.getElementById("inamet").value,tabc,ls-60,maxtxtw); //tab1+50
+          ctx.fillText(st.nameTamil,tabc,ls-60,maxtxtw); //tab1+50
           ctx.shadowColor = "white"; ctx.shadowBlur = 0; ctx.shadowOffsetX = 2;  ctx.shadowOffsetY = 2;  
           ctx.fillStyle = tamnaf; //#F05E68
-          ctx.fillText(document.getElementById("inamet").value,tabc,ls-60,maxtxtw); //tab1+50
+          ctx.fillText(st.nameTamil,tabc,ls-60,maxtxtw); //tab1+50
 
 
 
@@ -459,33 +482,33 @@
           ctx.fillText(document.getElementById("imn").name,tab1,ls+(lh*4),tab2-tab1);
           ctx.fillText(document.getElementById("iaddress1").name,tab1,ls+(lh*5),tab2-tab1);
           ctx.textAlign = "end";
-          ctx.fillText(document.getElementById("ibgroup").value!=" "? "B.G: ":"",tabage,(ls+lh*7),100);
+          ctx.fillText(st.bg!=" "? "B.G: ":"",tabage,(ls+lh*7),100);
           ctx.textAlign = "start"; 
-          if(document.getElementById("istudno").value != " " && document.getElementById("istudno").value != "" ){ ctx.fillText( document.getElementById("istudno").name ,tab1,(ls+lh*8),tab2-tab1);}
+          if(st.studno != " " && st.studno != "" ){ ctx.fillText( document.getElementById("istudno").name ,tab1,(ls+lh*8),tab2-tab1);}
           ctx.textAlign = "start"; 
 
           
           // value
           ctx.font = "bold 32px 'Times New Roman'";// value style
           ctx.textAlign = "center";
-          ctx.fillText(document.getElementById("inamee").value,tabc,ls,maxtxtw);
+          ctx.fillText(st.nameEnglish,tabc,ls,maxtxtw);
           ctx.font = "bold 30px 'Noto Sans Tamil'";// Arial, Noto Sans Tamil, Mukta Malar
           ctx.textAlign = "start";
-          ctx.fillText(": "+document.getElementById("iclass").value +" "+(document.getElementById("isec").value!=" "?(" - '"+document.getElementById("isec").value+"'"):"" ),tab2,ls+lh);
+          ctx.fillText(": "+st.class +" "+(st.sec!=" "?(" - '"+st.sec+"'"):"" ),tab2,ls+lh);
                        
-          ctx.fillText(": "+document.getElementById("igendar").value,tab2,(ls+lh*2),tabdob-(tab2+90));
-          ctx.fillText(": "+document.getElementById("idob").value,tabdob,(ls+lh*2));
+          ctx.fillText(": "+st.gendar,tab2,(ls+lh*2),tabdob-(tab2+90));
+          ctx.fillText(": "+st.dob,tabdob,(ls+lh*2));
 
           agecount();
           ctx.fillText(": "+age,tabage,ls+(lh*2)); //age
   
-          ctx.fillText(": "+document.getElementById("ifn").value,tab2,ls+(lh*3),maxtxtw-100);
-          ctx.fillText(": "+document.getElementById("imn").value,tab2,ls+(lh*4),maxtxtw-100);
-          ctx.fillText(": "+document.getElementById("iaddress1").value,tab2,ls+(lh*5),maxtxtw-100);
-          ctx.fillText(document.getElementById("iaddress2").value+" - "+document.getElementById("ipin").value,tab1,ls+(lh*6),maxtxtw);
-          ctx.fillText(document.getElementById("icell").value,tab1,ls+(lh*7),maxtxtw-120);
-          ctx.fillText(document.getElementById("ibgroup").value,tabage,(ls+lh*7),50);
-          if(document.getElementById("istudno").value != " " && document.getElementById("istudno").value != "" ){ ctx.fillText( ": "+ document.getElementById("istudno").value ,tab2,(ls+lh*8),maxtxtw);}
+          ctx.fillText(": "+st.fatherName,tab2,ls+(lh*3),maxtxtw-100);
+          ctx.fillText(": "+st.motherName,tab2,ls+(lh*4),maxtxtw-100);
+          ctx.fillText(": "+st.address1,tab2,ls+(lh*5),maxtxtw-100);
+          ctx.fillText(st.address2+" - "+st.pin,tab1,ls+(lh*6),maxtxtw);
+          ctx.fillText(st.cellno,tab1,ls+(lh*7),maxtxtw-120);
+          ctx.fillText(st.bg,tabage,(ls+lh*7),50);
+          if(st.studno != " " && st.studno != "" ){ ctx.fillText( ": "+ st.studno ,tab2,(ls+lh*8),maxtxtw);}
 
           ctx.shadowColor = "transparent"; // remove shadow
 //footer HM 
@@ -547,20 +570,20 @@
           //data save
           savetxt="<schooldata>"+
             "<studentdata>"+
-              "<nametamil>"+document.getElementById("inamet").value+"</nametamil>"+
-              "<nameenglish>"+document.getElementById("inamee").value+"</nameenglish>"+
-              "<class>"+document.getElementById("iclass").value+"</class>"+
-              "<sec>"+document.getElementById("isec").value+"</sec>"+
-              "<gendar>"+document.getElementById("igendar").value+"</gendar>"+
-              "<dob>"+(document.getElementById("idob").value!=""?document.getElementById("idob").value:"0")+"</dob>"+
-              "<bg>"+document.getElementById("ibgroup").value+"</bg>"+
-              "<fname>"+(document.getElementById("ifn").value!=""?document.getElementById("ifn").value:"-")+"</fname>"+
-              "<mname>"+(document.getElementById("imn").value!=""?document.getElementById("imn").value:"-")+"</mname>"+
-              "<address1>"+(document.getElementById("iaddress1").value!=""?document.getElementById("iaddress1").value:"-")+"</address1>"+
-              "<address2>"+(document.getElementById("iaddress2").value!=""?document.getElementById("iaddress2").value:"-")+"</address2>"+
-              "<pin>"+(document.getElementById("ipin").value!=""?document.getElementById("ipin").value:"-")+"</pin>"+
-              "<cellno>"+(document.getElementById("icell").value!=""?document.getElementById("icell").value:"-")+"</cellno>"+
-              "<studno>"+(document.getElementById("istudno").value!=""?document.getElementById("istudno").value:"-")+"</studno>"+
+              "<nametamil>"+st.nameTamil+"</nametamil>"+
+              "<nameenglish>"+st.nameEnglish+"</nameenglish>"+
+              "<class>"+st.class+"</class>"+
+              "<sec>"+st.sec+"</sec>"+
+              "<gendar>"+st.gendar+"</gendar>"+
+              "<dob>"+(st.dob!=""?st.dob:"0")+"</dob>"+
+              "<bg>"+st.bg+"</bg>"+
+              "<fname>"+(st.fatherName!=""?st.fatherName:"-")+"</fname>"+
+              "<mname>"+(st.motherName!=""?st.motherName:"-")+"</mname>"+
+              "<address1>"+(st.address1!=""?st.address1:"-")+"</address1>"+
+              "<address2>"+(st.address2!=""?st.address2:"-")+"</address2>"+
+              "<pin>"+(st.pin!=""?st.pin:"-")+"</pin>"+
+              "<cellno>"+(st.cellno!=""?st.cellno:"-")+"</cellno>"+
+              "<studno>"+(st.studno!=""?st.studno:"-")+"</studno>"+
               "</studentdata>"+
               "</schooldata>";
           
@@ -568,19 +591,19 @@
           var sa=document.getElementById("savedata");
           var textblob = new Blob([savetxt],{ type: 'text/idd;charset=utf-8' });
           sa.href=URL.createObjectURL(textblob);
-          sa.download=document.getElementById("iclass").value+"_"+document.getElementById("isec").value+"_"+document.getElementById("inamee").value+".idd";
+          sa.download=st.class+"_"+st.sec+"_"+st.nameEnglish+".idd";
           
           // save photo    
             const savaephoto=document.getElementById("savephoto");
             savephoto.href= img1.src;
-            savaephoto.download=document.getElementById("iclass").value+"_"+document.getElementById("isec").value+"_"+document.getElementById("inamee").value+"_Pho.jpg";
+            savaephoto.download=st.class+"_"+st.sec+"_"+st.nameEnglish+"_Pho.jpg";
 
           //ID image save
           c.toBlob(
             blob => {
                 const anchor = document.getElementById("a1");
                 anchor.href = URL.createObjectURL(blob);
-                anchor.download=document.getElementById("iclass").value+"_"+document.getElementById("isec").value+"_"+document.getElementById("inamee").value+"_ID.jpg"
+                anchor.download=st.class+"_"+st.sec+"_"+st.nameEnglish+"_ID.jpg"
             },'image/jpeg',1);
 
 
@@ -591,7 +614,7 @@
       }
 
       function agecount(){ //agec,dob){
-        let doba= document.getElementById("idob").value.split("-");
+        let doba= st.dob.split("-");
         if(doba.length==3){
           
           if(doba[1]>5){
