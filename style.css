@@ -1,0 +1,35 @@
+
+    select, input {
+      padding: 8px;   
+      margin-left: 0px;
+      margin-right: 10px;
+      margin-top: 0px;
+      margin-bottom: 10px;
+      width:100%;
+      font-weight: bolder;
+      font-size: large;
+
+
+      }
+    label{
+      padding-left: 8px;   
+      margin-right: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-decoration:underline;
+      font-weight: bolder;
+      font-size: large;
+
+    }
+    #savedata, #a1 {
+      margin: 20px;
+      font-size: large;
+      font-weight: bolder;
+    }
+    #iform{
+      margin: 20px;
+      max-width: 720px;
+    }
+
+
+
